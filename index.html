@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body id="top">
   <header class="header" id="header">
     <nav class="nav container">
       <a href="#home" class="logo">KM<span>.</span></a>
@@ -105,7 +105,7 @@
   <footer class="footer">
     <div class="container footer-content">
       <p data-pt="© 2026 Khauan Moraes Rodrigues — Designer Gráfico" data-en="© 2026 Khauan Moraes Rodrigues — Graphic Designer">© 2026 Khauan Moraes Rodrigues — Designer Gráfico</p>
-      <a href="#home" class="back-to-top" data-pt="Voltar ao topo" data-en="Back to top">Voltar ao topo</a>
+      <a href="#top" class="back-to-top" data-pt="Voltar ao topo" data-en="Back to top">Voltar ao topo</a>
     </div>
   </footer>
 
@@ -146,6 +146,7 @@
     const langToggle = document.getElementById('langToggle');
     const elementsToTranslate = document.querySelectorAll('[data-pt]');
     const header = document.getElementById('header');
+    const backToTop = document.querySelector('.back-to-top');
     const modal = document.getElementById('imageModal');
     const modalImage = document.getElementById('modalImage');
     const closeModal = document.querySelector('.modal-close');
@@ -166,6 +167,14 @@
     }
 
     langToggle.addEventListener('click', toggleLanguage);
+
+    backToTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
 
     let lastScroll = 0;
     window.addEventListener('scroll', () => {
