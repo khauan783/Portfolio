@@ -2,12 +2,13 @@
   --bg: #0a0a0f;
   --surface: #12121d;
   --surface-2: #181827;
-  --text: #f5f5f7;
-  --muted: #b0b0c3;
+  --surface-3: #1c1c31;
+  --text: #f7f5ff;
+  --muted: #b9b7cf;
   --primary: #a855f7;
   --primary-2: #7c3aed;
-  --border: rgba(168, 85, 247, 0.18);
-  --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  --border: rgba(168, 85, 247, 0.16);
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.38);
   --radius: 18px;
 }
 
@@ -24,10 +25,11 @@ html {
 body {
   font-family: 'Inter', sans-serif;
   background:
-    radial-gradient(circle at top, rgba(168, 85, 247, 0.08), transparent 20%),
-    linear-gradient(135deg, #0a0a0f 0%, #150f24 50%, #0a0a0f 100%);
+    radial-gradient(circle at top, rgba(168, 85, 247, 0.06), transparent 18%),
+    linear-gradient(135deg, #0a0a0f 0%, #140e22 48%, #0a0a0f 100%);
   color: var(--text);
   overflow-x: hidden;
+  line-height: 1.6;
 }
 
 img {
@@ -55,8 +57,9 @@ a {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(10, 10, 15, 0.75);
+  background: rgba(9, 9, 14, 0.78);
   backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
@@ -84,12 +87,21 @@ a {
 
 .lang-btn {
   background: linear-gradient(90deg, var(--primary), var(--primary-2));
-  color: white;
+  color: #fff;
   border: none;
   border-radius: 999px;
-  padding: 0.8rem 1rem;
+  padding: 0.78rem 1rem;
   font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
   cursor: pointer;
+  box-shadow: 0 10px 22px rgba(168, 85, 247, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lang-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(168, 85, 247, 0.3);
 }
 
 .hero {
@@ -139,6 +151,13 @@ a {
   box-shadow: 0 0 40px rgba(168, 85, 247, 0.35);
   position: relative;
   z-index: 1;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.photo-wrap:hover .profile-photo {
+  transform: scale(1.04) translateY(-3px);
+  box-shadow: 0 0 50px rgba(168, 85, 247, 0.5);
+  border-color: #c084fc;
 }
 
 .hero-text {
@@ -192,7 +211,9 @@ a {
   padding: 0.95rem 1.2rem;
   border-radius: 999px;
   font-weight: 600;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 0.96rem;
+  letter-spacing: 0.02em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .btn:hover {
@@ -206,25 +227,28 @@ a {
 }
 
 .btn-secondary {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border);
+  color: var(--text);
 }
 
 .section-title {
   text-align: center;
   font-size: clamp(2rem, 3vw, 3rem);
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.5rem;
   color: #fff;
   position: relative;
   display: block;
   width: 100%;
+  font-weight: 700;
+  letter-spacing: 0.03em;
 }
 
 .section-title::after {
   content: '';
-  width: 70px;
+  width: 78px;
   height: 3px;
-  background: linear-gradient(90deg, var(--primary), transparent);
+  background: linear-gradient(90deg, var(--primary), rgba(255, 255, 255, 0.12));
   display: block;
   margin: 0.8rem auto 0;
   border-radius: 999px;
@@ -242,11 +266,11 @@ a {
 }
 
 .about-card {
-  background: linear-gradient(145deg, rgba(18, 18, 29, 0.92), rgba(24, 24, 39, 0.92));
+  background: linear-gradient(145deg, rgba(18, 18, 29, 0.94), rgba(24, 24, 39, 0.94));
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 2rem;
-  max-width: 900px;
+  padding: 2.2rem;
+  max-width: 920px;
   margin: 0 auto;
   box-shadow: var(--shadow);
   position: relative;
@@ -280,7 +304,7 @@ a {
 }
 
 .portfolio-card {
-  background: var(--surface);
+  background: linear-gradient(180deg, var(--surface), var(--surface-2));
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--border);
@@ -314,8 +338,9 @@ a {
 }
 
 .card-info {
-  padding: 1rem;
+  padding: 1rem 1rem 1.1rem;
   text-align: center;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
 }
 
 .card-info h3 {
@@ -336,9 +361,35 @@ a {
 
 .footer {
   padding: 48px 0 80px;
-  text-align: center;
   color: var(--muted);
   border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.back-to-top {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, var(--primary), var(--primary-2));
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.8rem 1rem;
+  font-weight: 600;
+  box-shadow: 0 10px 22px rgba(168, 85, 247, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.back-to-top:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(168, 85, 247, 0.3);
 }
 
 .modal {
