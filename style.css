@@ -213,8 +213,21 @@ a {
 .section-title {
   text-align: center;
   font-size: clamp(2rem, 3vw, 3rem);
-  margin-bottom: 2rem;
+  margin-bottom: 1.4rem;
   color: #fff;
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.section-title::after {
+  content: '';
+  width: 70px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), transparent);
+  display: block;
+  margin: 0.8rem auto 0;
+  border-radius: 999px;
 }
 
 .contact {
@@ -225,6 +238,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .about-card {
@@ -235,6 +249,17 @@ a {
   max-width: 900px;
   margin: 0 auto;
   box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-card::before {
+  content: '';
+  position: absolute;
+  inset: auto -40px -40px auto;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.18), transparent 70%);
 }
 
 .about-age {
@@ -261,17 +286,31 @@ a {
   border: 1px solid var(--border);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  position: relative;
+}
+
+.portfolio-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.35));
+  pointer-events: none;
 }
 
 .portfolio-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-6px) scale(1.01);
   box-shadow: var(--shadow);
+}
+
+.portfolio-card:hover img {
+  transform: scale(1.04);
 }
 
 .portfolio-card img {
   width: 100%;
   height: 320px;
   object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
 .card-info {
@@ -287,12 +326,19 @@ a {
 .contact-buttons .btn-contact {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border);
+  min-width: 150px;
+}
+
+.contact-buttons .btn-contact:hover {
+  background: linear-gradient(90deg, rgba(168, 85, 247, 0.12), rgba(124, 58, 237, 0.18));
+  box-shadow: 0 12px 24px rgba(168, 85, 247, 0.15);
 }
 
 .footer {
   padding: 48px 0 80px;
   text-align: center;
   color: var(--muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .modal {
