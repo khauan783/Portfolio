@@ -116,6 +116,32 @@
   </div>
 
   <script>
+    const scrollKey = 'portfolio-scroll-position';
+    const sectionIdKey = 'portfolio-section-id';
+    window.history.scrollRestoration = 'manual';
+
+    const savedSectionId = sessionStorage.getItem(sectionIdKey);
+    const savedScroll = sessionStorage.getItem(scrollKey);
+
+    if (savedSectionId) {
+      const section = document.getElementById(savedSectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'auto', block: 'start' });
+      }
+    } else if (savedScroll !== null) {
+      window.scrollTo(0, Number(savedScroll));
+    } else {
+      window.scrollTo(0, 0);
+    }
+
+    window.addEventListener('beforeunload', () => {
+      const currentSection = document.querySelector('section[id]');
+      if (currentSection) {
+        sessionStorage.setItem(sectionIdKey, currentSection.id);
+      }
+      sessionStorage.setItem(scrollKey, window.scrollY);
+    });
+
     const langToggle = document.getElementById('langToggle');
     const elementsToTranslate = document.querySelectorAll('[data-pt]');
     const header = document.getElementById('header');
